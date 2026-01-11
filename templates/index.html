@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PersonaCheck</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/images/favicon.ico')}}">
+</head>
+<body>
+    <section>
+        <div class="container">
+            <form action="/predict" method="POST">
+                <h2>PersonaCheck</h2>
+
+                <div class="user-details">
+                    <div class="input-box">
+                        <input type="number" name="hours_alone" placeholder="Hours spent alone (per day)" required>
+                    </div> 
+
+                    <label>Do you have stage fear?</label>
+                    <select name="stage_fear" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <div class="input-box">
+                        <input type="number" name="social_events" placeholder="Social events attended (per month)" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="number" name="days_outside" placeholder="Days spent outside (per week)" required>
+                    </div>
+
+                    <label>Do you feel drained after socializing?</label>
+                    <select name="drained" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <div class="input-box">
+                        <input type="number" name="friend_circles" placeholder="Number of friend circles" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="number" name="social_posts" placeholder="Social media posts made (per month)" required>
+                    </div>
+
+                </div>
+
+                <button type="submit">Check</button>
+
+                {% if result %}
+                <div class="answer">
+                    <p>{{ result }}</p>
+                </div>
+                {% endif %}
+                <div class="copyrightText">
+                    <p>Created by Nhlosokuhle Khoza. © 2026</p>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
